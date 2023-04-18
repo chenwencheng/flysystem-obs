@@ -18,22 +18,22 @@ class ValidAdapterTest extends TestCase
 
     private function getKey(): string
     {
-        return (string) getenv('HUAWEI_CLOUD_KEY') ?: '';
+        return (string) getenv('OBS_KEY') ?: '';
     }
 
     private function getSecret(): string
     {
-        return (string) getenv('HUAWEI_CLOUD_SECRET') ?: '';
+        return (string) getenv('OBS_SECRET') ?: '';
     }
 
     private function getBucket(): string
     {
-        return (string) getenv('HUAWEI_CLOUD_BUCKET') ?: '';
+        return (string) getenv('OBS_BUCKET') ?: '';
     }
 
     private function getEndpoint(): string
     {
-        return (string) getenv('HUAWEI_CLOUD_ENDPOINT') ?: 'obs.cn-east-3.myhuaweicloud.com';
+        return (string) getenv('OBS_ENDPOINT') ?: 'obs.cn-east-3.myhuaweicloud.com';
     }
 
     protected function setUp(): void
