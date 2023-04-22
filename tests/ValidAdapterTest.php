@@ -26,14 +26,19 @@ class ValidAdapterTest extends TestCase
         return (string) getenv('OBS_SECRET') ?: '';
     }
 
-    private function getBucket(): string
+    protected function getBucket(): string
     {
         return (string) getenv('OBS_BUCKET') ?: '';
     }
 
-    private function getEndpoint(): string
+    protected function getEndpoint(): string
     {
         return (string) getenv('OBS_ENDPOINT') ?: 'obs.cn-east-3.myhuaweicloud.com';
+    }
+
+    protected function isBucketEndpoint(): bool
+    {
+        return false;
     }
 
     protected function setUp(): void
@@ -49,6 +54,7 @@ class ValidAdapterTest extends TestCase
             'secret' => $this->getSecret(),
             'bucket' => $this->getBucket(),
             'endpoint' => $this->getEndpoint(),
+            'is_cname' => $this->isBucketEndpoint(),
             'path_style' => '',
             'region' => '',
         ];
