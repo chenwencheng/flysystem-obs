@@ -12,31 +12,33 @@ use League\Flysystem\Visibility;
 use Obs\ObsClient;
 use Zing\Flysystem\Obs\ObsAdapter;
 
-/**
- * @internal
- */
-final class ValidAdapterTest extends TestCase
+class ValidAdapterTest extends TestCase
 {
     private ObsAdapter $obsAdapter;
 
     private function getKey(): string
     {
-        return (string) getenv('HUAWEI_CLOUD_KEY') ?: '';
+        return (string) getenv('OBS_KEY') ?: '';
     }
 
     private function getSecret(): string
     {
-        return (string) getenv('HUAWEI_CLOUD_SECRET') ?: '';
+        return (string) getenv('OBS_SECRET') ?: '';
     }
 
-    private function getBucket(): string
+    protected function getBucket(): string
     {
-        return (string) getenv('HUAWEI_CLOUD_BUCKET') ?: '';
+        return (string) getenv('OBS_BUCKET') ?: '';
     }
 
-    private function getEndpoint(): string
+    protected function getEndpoint(): string
     {
-        return (string) getenv('HUAWEI_CLOUD_ENDPOINT') ?: 'obs.cn-east-3.myhuaweicloud.com';
+        return (string) getenv('OBS_ENDPOINT') ?: 'obs.cn-east-3.myhuaweicloud.com';
+    }
+
+    protected function isBucketEndpoint(): bool
+    {
+        return false;
     }
 
     protected function setUp(): void
@@ -52,6 +54,7 @@ final class ValidAdapterTest extends TestCase
             'secret' => $this->getSecret(),
             'bucket' => $this->getBucket(),
             'endpoint' => $this->getEndpoint(),
+            'is_cname' => $this->isBucketEndpoint(),
             'path_style' => '',
             'region' => '',
         ];

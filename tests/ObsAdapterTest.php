@@ -18,16 +18,16 @@ final class ObsAdapterTest extends FilesystemAdapterTestCase
     protected static function createFilesystemAdapter(): FilesystemAdapter
     {
         $config = [
-            'key' => (string) getenv('HUAWEI_CLOUD_KEY') ?: '',
-            'secret' => (string) getenv('HUAWEI_CLOUD_SECRET') ?: '',
-            'bucket' => (string) getenv('HUAWEI_CLOUD_BUCKET') ?: '',
-            'endpoint' => (string) getenv('HUAWEI_CLOUD_ENDPOINT') ?: 'obs.cn-east-3.myhuaweicloud.com',
+            'key' => (string) getenv('OBS_KEY') ?: '',
+            'secret' => (string) getenv('OBS_SECRET') ?: '',
+            'bucket' => (string) getenv('OBS_BUCKET') ?: '',
+            'endpoint' => (string) getenv('OBS_ENDPOINT') ?: 'obs.cn-east-3.myhuaweicloud.com',
             'path_style' => '',
             'region' => '',
         ];
 
         return new ObsAdapter(new ObsClient($config), (string) getenv(
-            'HUAWEI_CLOUD_BUCKET'
+            'OBS_BUCKET'
         ) ?: '', 'github-test', null, null, [
             'endpoint' => $config['endpoint'],
         ]);
