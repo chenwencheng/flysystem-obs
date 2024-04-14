@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Zing\Flysystem\Obs\Tests;
 
-class BucketEndpointTest extends ValidAdapterTest
+/**
+ * @internal
+ */
+final class BucketEndpointTest extends ValidAdapterTest
 {
     protected function getEndpoint(): string
     {
