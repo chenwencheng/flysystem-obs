@@ -280,7 +280,7 @@ class ObsAdapter extends AbstractAdapter
             foreach (array_chunk($keys, 1000) as $items) {
                 $this->client->deleteObjects([
                     'Bucket' => $this->bucket,
-                    'Objects' => array_map(function ($key): array {
+                    'Objects' => array_map(static function ($key): array {
                         return [
                             'Key' => $key,
                         ];
@@ -638,7 +638,7 @@ class ObsAdapter extends AbstractAdapter
     /**
      * Read an object from the ObsClient.
      *
-     * @param $path
+     * @param mixed $path
      *
      * @return \Obs\Internal\Common\CheckoutStream
      */
@@ -665,7 +665,7 @@ class ObsAdapter extends AbstractAdapter
     public function listDirObjects($dirname = '', $recursive = false)
     {
         $prefix = trim($this->applyPathPrefix($dirname), '/');
-        $prefix = empty($prefix) ? '' : $prefix . '/';
+        $prefix = $prefix === '' ? '' : $prefix . '/';
 
         $nextMarker = '';
 
@@ -737,7 +737,7 @@ class ObsAdapter extends AbstractAdapter
     /**
      * sign url.
      *
-     * @param $path
+     * @param mixed $path
      * @param \DateTimeInterface|int $expiration
      * @param mixed $method
      *

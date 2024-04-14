@@ -47,108 +47,108 @@ class InvalidAdapterTest extends TestCase
 
     public function testUpdate(): void
     {
-        static::assertFalse($this->obsAdapter->update('file.txt', 'test', new Config()));
+        $this->assertFalse($this->obsAdapter->update('file.txt', 'test', new Config()));
     }
 
     public function testUpdateStream(): void
     {
-        static::assertFalse(
+        $this->assertFalse(
             $this->obsAdapter->updateStream('file.txt', $this->streamFor('test')->detach(), new Config())
         );
     }
 
     public function testCopy(): void
     {
-        static::assertFalse($this->obsAdapter->copy('file.txt', 'copy.txt'));
+        $this->assertFalse($this->obsAdapter->copy('file.txt', 'copy.txt'));
     }
 
     public function testCreateDir(): void
     {
-        static::assertFalse($this->obsAdapter->createDir('path', new Config()));
+        $this->assertFalse($this->obsAdapter->createDir('path', new Config()));
     }
 
     public function testSetVisibility(): void
     {
-        static::assertFalse($this->obsAdapter->setVisibility('file.txt', AdapterInterface::VISIBILITY_PUBLIC));
+        $this->assertFalse($this->obsAdapter->setVisibility('file.txt', AdapterInterface::VISIBILITY_PUBLIC));
     }
 
     public function testRename(): void
     {
-        static::assertFalse($this->obsAdapter->rename('from.txt', 'to.txt'));
+        $this->assertFalse($this->obsAdapter->rename('from.txt', 'to.txt'));
     }
 
     public function testDeleteDir(): void
     {
         $this->expectException(ObsException::class);
-        static::assertFalse($this->obsAdapter->deleteDir('path'));
+        $this->assertFalse($this->obsAdapter->deleteDir('path'));
     }
 
     public function testWriteStream(): void
     {
-        static::assertFalse(
+        $this->assertFalse(
             $this->obsAdapter->writeStream('file.txt', $this->streamFor('test')->detach(), new Config())
         );
     }
 
     public function testDelete(): void
     {
-        static::assertFalse($this->obsAdapter->delete('file.txt'));
+        $this->assertFalse($this->obsAdapter->delete('file.txt'));
     }
 
     public function testWrite(): void
     {
-        static::assertFalse($this->obsAdapter->write('file.txt', 'test', new Config()));
+        $this->assertFalse($this->obsAdapter->write('file.txt', 'test', new Config()));
     }
 
     public function testRead(): void
     {
-        static::assertFalse($this->obsAdapter->read('file.txt'));
+        $this->assertFalse($this->obsAdapter->read('file.txt'));
     }
 
     public function testReadStream(): void
     {
-        static::assertFalse($this->obsAdapter->readStream('file.txt'));
+        $this->assertFalse($this->obsAdapter->readStream('file.txt'));
     }
 
     public function testGetVisibility(): void
     {
-        static::assertFalse($this->obsAdapter->getVisibility('file.txt'));
+        $this->assertFalse($this->obsAdapter->getVisibility('file.txt'));
     }
 
     public function testGetMetadata(): void
     {
-        static::assertFalse($this->obsAdapter->getMetadata('file.txt'));
+        $this->assertFalse($this->obsAdapter->getMetadata('file.txt'));
     }
 
     public function testListContents(): void
     {
         $this->expectException(ObsException::class);
-        static::assertEmpty($this->obsAdapter->listContents());
+        $this->assertEmpty($this->obsAdapter->listContents());
     }
 
     public function testGetSize(): void
     {
-        static::assertFalse($this->obsAdapter->getSize('file.txt'));
+        $this->assertFalse($this->obsAdapter->getSize('file.txt'));
     }
 
     public function testGetTimestamp(): void
     {
-        static::assertFalse($this->obsAdapter->getTimestamp('file.txt'));
+        $this->assertFalse($this->obsAdapter->getTimestamp('file.txt'));
     }
 
     public function testGetMimetype(): void
     {
-        static::assertFalse($this->obsAdapter->getMimetype('file.txt'));
+        $this->assertFalse($this->obsAdapter->getMimetype('file.txt'));
     }
 
     public function testHas(): void
     {
-        static::assertFalse($this->obsAdapter->has('file.txt'));
+        $this->assertFalse($this->obsAdapter->has('file.txt'));
     }
 
     public function testGetUrl(): void
     {
-        static::assertSame(
+        $this->assertSame(
             'https://test.obs.cn-east-3.myhuaweicloud.com/file.txt',
             $this->obsAdapter->getUrl('file.txt')
         );
@@ -156,24 +156,24 @@ class InvalidAdapterTest extends TestCase
 
     public function testSignUrl(): void
     {
-        static::assertFalse($this->obsAdapter->signUrl('file.txt', 10, [], null));
+        $this->assertFalse($this->obsAdapter->signUrl('file.txt', 10, [], null));
     }
 
     public function testGetTemporaryUrl(): void
     {
-        static::assertFalse($this->obsAdapter->getTemporaryUrl('file.txt', 10, [], null));
+        $this->assertFalse($this->obsAdapter->getTemporaryUrl('file.txt', 10, [], null));
     }
 
     public function testSetBucket(): void
     {
-        static::assertSame('test', $this->obsAdapter->getBucket());
+        $this->assertSame('test', $this->obsAdapter->getBucket());
         $this->obsAdapter->setBucket('bucket');
-        static::assertSame('bucket', $this->obsAdapter->getBucket());
+        $this->assertSame('bucket', $this->obsAdapter->getBucket());
     }
 
     public function testGetClient(): void
     {
-        static::assertInstanceOf(ObsClient::class, $this->obsAdapter->getClient());
+        $this->assertInstanceOf(ObsClient::class, $this->obsAdapter->getClient());
     }
 
     public function testGetUrlWithUrl(): void
@@ -184,7 +184,7 @@ class InvalidAdapterTest extends TestCase
         ]);
         $filesystem = new Filesystem($obsAdapter);
         $filesystem->addPlugin(new FileUrl());
-        static::assertSame('https://oss.cdn.com/test', $filesystem->getUrl('test'));
+        $this->assertSame('https://oss.cdn.com/test', $filesystem->getUrl('test'));
     }
 
     public function testGetUrlWithBucketEndpoint(): void
@@ -195,7 +195,7 @@ class InvalidAdapterTest extends TestCase
         ]);
         $filesystem = new Filesystem($obsAdapter);
         $filesystem->addPlugin(new FileUrl());
-        static::assertSame('https://oss.cdn.com/test', $filesystem->getUrl('test'));
+        $this->assertSame('https://oss.cdn.com/test', $filesystem->getUrl('test'));
     }
 
     public function testGetTemporaryUrlWithUrl(): void
@@ -205,6 +205,6 @@ class InvalidAdapterTest extends TestCase
         ]);
         $filesystem = new Filesystem($obsAdapter);
         $filesystem->addPlugin(new TemporaryUrl());
-        static::assertStringStartsWith('https://oss.cdn.com/test', (string) $filesystem->getTemporaryUrl('test', 10));
+        $this->assertStringStartsWith('https://oss.cdn.com/test', (string) $filesystem->getTemporaryUrl('test', 10));
     }
 }

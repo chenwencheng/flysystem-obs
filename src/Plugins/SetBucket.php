@@ -21,7 +21,7 @@ class SetBucket extends AbstractPlugin
     /**
      * handle.
      *
-     * @param $bucket
+     * @param mixed $bucket
      *
      * @return mixed
      */
