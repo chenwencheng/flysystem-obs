@@ -1,8 +1,8 @@
 # Flysystem OBS
 
 <p align="center">
-<a href="https://github.com/zingimmick/flysystem-obs/actions"><img src="https://github.com/zingimmick/flysystem-obs/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://codecov.io/gh/zingimmick/flysystem-obs"><img src="https://codecov.io/gh/zingimmick/flysystem-obs/branch/master/graph/badge.svg" alt="Code Coverage" /></a>
+<a href="https://github.com/zingimmick/flysystem-obs/actions"><img src="https://github.com/zingimmick/flysystem-obs/actions/workflows/tests.yml/badge.svg?branch=3.x" alt="Build Status"></a>
+<a href="https://codecov.io/gh/zingimmick/flysystem-obs"><img src="https://codecov.io/gh/zingimmick/flysystem-obs/branch/3.x/graph/badge.svg" alt="Code Coverage" /></a>
 <a href="https://packagist.org/packages/zing/flysystem-obs"><img src="https://poser.pugx.org/zing/flysystem-obs/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/zing/flysystem-obs"><img src="https://poser.pugx.org/zing/flysystem-obs/downloads" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/zing/flysystem-obs"><img src="https://poser.pugx.org/zing/flysystem-obs/v/unstable.svg" alt="Latest Unstable Version"></a>
