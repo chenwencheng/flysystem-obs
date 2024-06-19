@@ -1,5 +1,5 @@
 {
-    "name": "zing/flysystem-obs",
+    "name": "qifei/flysystem-obs",
     "description": "OBS filesystem adapter for Flysystem.",
     "keywords": ["obs", "flysystem", "filesystem", "storage", "file", "files"],
     "license": "MIT",
